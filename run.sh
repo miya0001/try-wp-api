@@ -74,11 +74,11 @@ bin/wp rewrite structure "/archives/%post_id%"
 bin/wp option update blogname "$WP_TITLE"
 bin/wp option update blogdescription "$WP_DESC"
 
-bin/wp plugin install rest-api
+bin/wp plugin install rest-api --activate
 
 if [ -e "provision-post.sh" ]; then
     bash provision-post.sh
 fi
 
-open http://127.0.0.1:$PORT
+open http://127.0.0.1:$PORT/wp-json/wp/v2
 bin/wp server --host=0.0.0.0 --port=$PORT --docroot=$WP_PATH
