@@ -4,9 +4,9 @@ set -ex;
 
 mysql.server start
 
-DB_USER=${1-root}
-DB_PASS=$2
-DB_NAME=${3-wpdev}
+DB_USER=root
+DB_PASS=$1
+DB_NAME=wpdev
 PORT=8080
 WP_PATH=$(pwd)/www
 WP_TITLE='Welcome to the WordPress'
@@ -73,6 +73,8 @@ bin/wp rewrite structure "/archives/%post_id%"
 
 bin/wp option update blogname "$WP_TITLE"
 bin/wp option update blogdescription "$WP_DESC"
+
+bin/wp plugin install rest-api
 
 if [ -e "provision-post.sh" ]; then
     bash provision-post.sh

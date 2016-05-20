@@ -16,7 +16,7 @@ WordPress development environment with PHP built-in web server + WP-CLI.
 ## Uage
 
 ```
-$ curl https://.../run.sh | bash -s <db-user> <db-pass> <db-name>
+$ curl https://.../run.sh | bash -s <mysql-root-password>
 ```
 
 or
